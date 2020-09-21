@@ -1,0 +1,35 @@
+[
+  {
+    "gls_id": "3276",
+    "ent_id": "1",
+    "gls_name": "MyLibraryAccountOnlineBibliotheekBlock",
+    "gls_type": "2",
+    "gls_domain": "4",
+    "gls_desc": "the account (last block) on the my profile page",
+    "gls_tech": "div.group:last-child",
+    "gls_example": null,
+    "gld_id": "4",
+    "gld_name": "KB",
+    "gld_desc": "GlossaryWord applies only to specific KB environment",
+    "glt_id": "2",
+    "glt_name": "TA",
+    "glt_desc": "GlossaryWord is a testautomation word"
+  },
+  {
+    "gls_id": "3277",
+    "ent_id": "1",
+    "gls_name": "MyLibraryAccountBlockOnlineBibliotheekTitle",
+    "gls_type": "2",
+    "gls_domain": "4",
+    "gls_desc": "the title of the account block",
+    "gls_tech": "div.group:last-child",
+    "gls_example": null,
+    "gld_id": "4",
+    "gld_name": "KB",
+    "gld_desc": "GlossaryWord applies only to specific KB environment",
+    "glt_id": "2",
+    "glt_name": "TA",
+    "glt_desc": "GlossaryWord is a testautomation word",
+    "_": "GlossaryWord is a testautomation word"
+  }
+]
