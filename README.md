@@ -8,4 +8,4 @@ https://semperdecus.github.io/
 -    JavaScript
 -    HTML5
 -    Bootstrap
--    [HTML% boilerplate](https://html5boilerplate.com/)
+-    [HTML5 boilerplate](https://html5boilerplate.com/)
