@@ -1,3 +1,4 @@
+// UTILS
 function prettyPrint() {
   let ugly = document.getElementById('InputJson').value;
   let obj = JSON.parse(ugly);
@@ -10,6 +11,16 @@ function copy() {
   document.execCommand('copy');
 }
 
+function refresh() {
+  getInputTags();
+  getInputLines();
+}
+
+$(document).ready(function () {
+  refresh()
+});
+
+// PARSE AS JSON
 const getAllJsonKeys = (jsonObj) => {
   let keys = [];
 
@@ -39,6 +50,7 @@ const parseInputAsJson = (inputJson) => {
   return jsonObj;
 }
 
+// REMOVE TAGS
 function removeTags() {
   let tagToRemove = $('#jsonTags').val();
   let inputJson = document.getElementById('InputJson').value;
@@ -90,7 +102,7 @@ function getInputTags() {
   });
 }
 
-
+// HIGHLIGHT DUPLICATE VALUES
 function highlightDuplicates() {
   let selectedTag = $('#jsonTagsDuplicate').val();
   let inputJson = document.getElementById('InputJson').value;
@@ -127,15 +139,45 @@ function highlightDuplicates() {
   document.getElementById("OutputJson").value = result;
 }
 
-function refresh() {
-  getInputTags();
-  getInputLines();
+// FIND UNUSED TAGS IN .feature FILES
+function readFiles() {
+  unusedTags = getAllTechTags();
+  var files = document.getElementById("files").files;
+  for (var i = 0; i < files.length; i++) {
+    if (files[i].name.includes(".feature")) {
+      findUnused(files[i], unusedTags);
+    }
+  }
 }
 
-$(document).ready(function () {
-  refresh()
-});
+function getAllTechTags() {
+  let inputJson = document.getElementById('InputJson').value;
+  let jsonObj = parseInputAsJson(inputJson)
+  let uniqueTag = {};
 
+  var result = [];
 
+  for (var item, i = 0; item = jsonObj[i++];) {
+    var name = item.gls_name;
 
+    if (!(name in uniqueTag)) {
+      uniqueTag[name] = 1;
+      result.push(name);
+    }
+  }
+  return result;
+}
 
+function findUnused(file, unusedTags) {
+  var reader = new FileReader();
+
+  reader.onload = function (e) {
+    for (var i = 0; i < unusedTags.length; i++) {
+      if (e.target.result.includes(unusedTags[i])) {
+        unusedTags.splice(i, 1);
+        console.log(unusedTags)
+      }
+    }
+  }
+  reader.readAsText(file, "UTF-8")
+}
